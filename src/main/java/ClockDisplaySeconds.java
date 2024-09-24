@@ -1,61 +1,62 @@
 package src.main.java;
 
-public class TimeDisplayWithSeconds {
+public class ClockDisplaySeconds {
     
-    private NumberDisplay hourDisplay;
-    private NumberDisplay minuteDisplay;
-    private NumberDisplay secondDisplay;
-    private String timeString;
+    private NumberDisplay hourCounter;
+    private NumberDisplay minuteCounter;
+    private NumberDisplay secondCounter;
+    private String timeDisplay;
 
-    public TimeDisplayWithSeconds() {
-        hourDisplay = new NumberDisplay(24);
-        minuteDisplay = new NumberDisplay(60);
-        secondDisplay = new NumberDisplay(60);
+    public ClockDisplaySeconds() {
+        hourCounter = new NumberDisplay(24);
+        minuteCounter = new NumberDisplay(60);
+        secondCounter = new NumberDisplay(60);
         refreshDisplay();
     }
     
-    public TimeDisplayWithSeconds(int hour, int minute, int second) {
-        hourDisplay = new NumberDisplay(24);
-        minuteDisplay = new NumberDisplay(60);
-        secondDisplay = new NumberDisplay(60);
-        setClockTime(hour, minute, second);
+    public ClockDisplaySeconds(int hour, int minute, int second) {
+        hourCounter = new NumberDisplay(24);
+        minuteCounter = new NumberDisplay(60);
+        secondCounter = new NumberDisplay(60);
+        setCurrentTime(hour, minute, second);
         refreshDisplay();
     }
     
-    public void advanceTime() {
-        secondDisplay.increment();
-        if (secondDisplay.getValue() == 0) {
-            minuteDisplay.increment();
-            if (minuteDisplay.getValue() == 0) {
-                hourDisplay.increment();
+    public void timeTick() {
+        secondCounter.increment();
+        if (secondCounter.getValue() == 0) {
+            minuteCounter.increment();   
+            if (minuteCounter.getValue() == 0) {
+                hourCounter.increment();
             }
         }
         refreshDisplay();
     }
     
-    public void setClockTime(int hour, int minute, int second) {
-        secondDisplay.setValue(second);
-        minuteDisplay.setValue(minute);
-        hourDisplay.setValue(hour);
-        refreshDisplay();
+    public void setCurrentTime(int hour, int minute, int second) {
+        secondCounter.setValue(second);
+        minuteCounter.setValue(minute);
+        hourCounter.setValue(hour);
+        refreshDisplay();       
     }
-    
+
     // Implement a method getTime that takes no parameter and returns a String
     // The return String should be formatted as HH:MM:SS and report out the current time
     public String getTime() {
-        return timeString;
+        return timeDisplay;
     }
-    
-    // Implement a method updateDisplay that takes no parameters and returns nothing
+
+    // Implement a method refreshDisplay that takes no parameters and returns nothing
     // The method should update the displayString with the current time in a format
     // HH:MM:SS
-    private void refreshDisplay() {
-        String output = "";
-        output = hourDisplay.getDisplayValue();
-        output += ":";
-        output += minuteDisplay.getDisplayValue();
-        output += ":";
-        output += secondDisplay.getDisplayValue();
-        timeString = output;
+    public void refreshDisplay() {
+        String result = "";
+        // result.toString();
+        result = hourCounter.getDisplayValue();
+        result += ":";
+        result += minuteCounter.getDisplayValue();
+        result += ":";
+        result += secondCounter.getDisplayValue();
+        timeDisplay = result;    
     }
 }
