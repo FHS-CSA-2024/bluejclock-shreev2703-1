@@ -1,6 +1,6 @@
 package src.main.java;
 
-public class TimeDriver {
+public class ClockDriver {
     public static void main(String[] args) {
         // Implement tests for your ClockDisplay
         //  * Test that you can do the basics
@@ -14,36 +14,36 @@ public class TimeDriver {
         //  * Tick test for 01:59 to 02:00
         //  * Tick test for 09:59 to 10:00
         //  * Tick test for 23:59 to 00:00
-
-        TimeDisplay test1 = new TimeDisplay();
+        
+        ClockDisplay test1 = new ClockDisplay();
         String result1 = test1.getTime();
         System.out.println("\nEmpty constructor test - " + result1);
 
-        TimeDisplay test2 = new TimeDisplay(3, 45);
+        ClockDisplay test2 = new ClockDisplay(3, 45);
         String result2 = test2.getTime();
         System.out.println("Two argument constructor test - " + result2);
 
-        TimeDisplay tickTest1 = new TimeDisplay(3, 32);
+        ClockDisplay tickTest1 = new ClockDisplay(3, 32);
         System.out.println("Tick test 1 PreTick - " + tickTest1.getTime());
         tickTest1.advanceTime();
         System.out.println("\tTick test 1 Post tick - " + tickTest1.getTime());
 
-        TimeDisplay tickTest2 = new TimeDisplay(3, 9);
+        ClockDisplay tickTest2 = new ClockDisplay(3, 9);
         System.out.println("Tick test 2 PreTick - " + tickTest2.getTime());
         tickTest2.advanceTime();
         System.out.println("\tTick test 2 Post tick - " + tickTest2.getTime());
 
-        TimeDisplay tickTest3 = new TimeDisplay(1, 59);
+        ClockDisplay tickTest3 = new ClockDisplay(1, 59);
         System.out.println("Tick test 3 PreTick - " + tickTest3.getTime());
         tickTest3.advanceTime();
         System.out.println("\tTick test 3 Post tick - " + tickTest3.getTime());
 
-        TimeDisplay tickTest4 = new TimeDisplay(9, 59);
+        ClockDisplay tickTest4 = new ClockDisplay(9, 59);
         System.out.println("Tick test 4 PreTick - " + tickTest4.getTime());
         tickTest4.advanceTime();
         System.out.println("\tTick test 4 Post tick - " + tickTest4.getTime());
 
-        TimeDisplay tickTest5 = new TimeDisplay(23, 59);
+        ClockDisplay tickTest5 = new ClockDisplay(23, 59);
         System.out.println("Tick test 5 PreTick - " + tickTest5.getTime());
         tickTest5.advanceTime();
         System.out.println("\tTick test 5 Post tick - " + tickTest5.getTime());
@@ -61,30 +61,30 @@ public class TimeDriver {
         //  * Tick test for 01:59:59 to 02:00:00
         //  * Tick test for 23:59:59 to 00:00:00
 
-        TimeDisplayWithSeconds secondsTest1 = new TimeDisplayWithSeconds();
+        ClockDisplaySeconds secondsTest1 = new ClockDisplaySeconds();
         String secondsResult1 = secondsTest1.getTime();
         System.out.println("Empty constructor test - " + secondsResult1);
 
-        TimeDisplayWithSeconds secondsTest2 = new TimeDisplayWithSeconds(3, 45, 34);
+        ClockDisplaySeconds secondsTest2 = new ClockDisplaySeconds(3, 45, 34);
         String secondsResult2 = secondsTest2.getTime();
         System.out.println("Three argument constructor test - " + secondsResult2);
 
-        TimeDisplayWithSeconds secondsTickTest1 = new TimeDisplayWithSeconds(3, 32, 59);
+        ClockDisplaySeconds secondsTickTest1 = new ClockDisplaySeconds(3, 32, 59);
         System.out.println("Tick test 1 PreTick - " + secondsTickTest1.getTime());
         secondsTickTest1.advanceTime();
         System.out.println("\tTick test 1 Post tick - " + secondsTickTest1.getTime());
 
-        TimeDisplayWithSeconds secondsTickTest2 = new TimeDisplayWithSeconds(1, 0, 59);
+        ClockDisplaySeconds secondsTickTest2 = new ClockDisplaySeconds(1, 0, 59);
         System.out.println("Tick test 2 PreTick - " + secondsTickTest2.getTime());
         secondsTickTest2.advanceTime();
         System.out.println("\tTick test 2 Post tick - " + secondsTickTest2.getTime());
 
-        TimeDisplayWithSeconds secondsTickTest3 = new TimeDisplayWithSeconds(1, 59, 59);
+        ClockDisplaySeconds secondsTickTest3 = new ClockDisplaySeconds(1, 59, 59);
         System.out.println("Tick test 3 PreTick - " + secondsTickTest3.getTime());
         secondsTickTest3.advanceTime();
         System.out.println("\tTick test 3 Post tick - " + secondsTickTest3.getTime());
 
-        TimeDisplayWithSeconds secondsTickTest4 = new TimeDisplayWithSeconds(23, 59, 59);
+        ClockDisplaySeconds secondsTickTest4 = new ClockDisplaySeconds(23, 59, 59);
         System.out.println("Tick test 4 PreTick - " + secondsTickTest4.getTime());
         secondsTickTest4.advanceTime();
         System.out.println("\tTick test 4 Post tick - " + secondsTickTest4.getTime());
@@ -103,30 +103,30 @@ public class TimeDriver {
         //  * Tick test for 11:59AM to 12:00PM
         //  * Tick test for 12:59PM to 01:00PM
 
-        TwelveHourDisplay ampmTest1 = new TwelveHourDisplay();
+        ClockDisplay12Hour ampmTest1 = new ClockDisplay12Hour();
         String ampmResult1 = ampmTest1.getTime();
         System.out.println("Empty constructor test - " + ampmResult1);
 
-        TwelveHourDisplay ampmTest2 = new TwelveHourDisplay(3, 45, "AM");
+        ClockDisplay12Hour ampmTest2 = new ClockDisplay12Hour(3, 45, "AM");
         String ampmResult2 = ampmTest2.getTime();
         System.out.println("Three argument constructor test - " + ampmResult2);
 
-        TwelveHourDisplay ampmTickTest1 = new TwelveHourDisplay(3, 32, "PM");
+        ClockDisplay12Hour ampmTickTest1 = new ClockDisplay12Hour(3, 32, "PM");
         System.out.println("Tick test 1 PreTick - " + ampmTickTest1.getTime());
         ampmTickTest1.advanceTime();
         System.out.println("\tTick test 1 Post tick - " + ampmTickTest1.getTime());
 
-        TwelveHourDisplay ampmTickTest2 = new TwelveHourDisplay(11, 59, "PM");
+        ClockDisplay12Hour ampmTickTest2 = new ClockDisplay12Hour(11, 59, "PM");
         System.out.println("Tick test 2 PreTick - " + ampmTickTest2.getTime());
         ampmTickTest2.advanceTime();
         System.out.println("\tTick test 2 Post tick - " + ampmTickTest2.getTime());
 
-        TwelveHourDisplay ampmTickTest3 = new TwelveHourDisplay(11, 59, "AM");
+        ClockDisplay12Hour ampmTickTest3 = new ClockDisplay12Hour(11, 59, "AM");
         System.out.println("Tick test 3 PreTick - " + ampmTickTest3.getTime());
         ampmTickTest3.advanceTime();
         System.out.println("\tTick test 3 Post tick - " + ampmTickTest3.getTime());
 
-        TwelveHourDisplay ampmTickTest4 = new TwelveHourDisplay(12, 59, "PM");
+        ClockDisplay12Hour ampmTickTest4 = new ClockDisplay12Hour(12, 59, "PM");
         System.out.println("Tick test 4 PreTick - " + ampmTickTest4.getTime());
         ampmTickTest4.advanceTime();
         System.out.println("\tTick test 4 Post tick - " + ampmTickTest4.getTime());
