@@ -1,66 +1,65 @@
 package src.main.java;
 
-public class TwelveHourDisplay {
+public class ClockDisplay12Hour {
     
     private NumberDisplay hourDisplay;
     private NumberDisplay minuteDisplay;
-    //private NumberDisplay secondDisplay;
-    private String timeString;
-    private String period; // AM/PM
+    //private NumberDisplay seconds; // Unused variable for seconds
+    private String timeRepresentation;
+    private String periodOfDay;
 
-    public TwelveHourDisplay() {
+    public ClockDisplay12Hour() {
         hourDisplay = new NumberDisplay(24);
         minuteDisplay = new NumberDisplay(60);
-        period = "AM";
+        periodOfDay = "AM";
         refreshDisplay();
     }
     
-    // Must implement am/pm
-    public TwelveHourDisplay(int hour, int minute, String timePeriod) {
+    // Constructor that requires hour, minute, and period (AM/PM)
+    public ClockDisplay12Hour(int hour, int minute, String period) {
         hourDisplay = new NumberDisplay(24);
         minuteDisplay = new NumberDisplay(60);
-        setClockTime(hour, minute, timePeriod);
+        setTime(hour, minute, period);
         refreshDisplay();
     }
     
-    // Nested ifs to change time of day
-    public void advanceTime() {
+    // Method to handle the tick of time
+    public void timeTick() {
         minuteDisplay.increment();
         if (minuteDisplay.getValue() == 0) {
-            hourDisplay.increment();
+            hourDisplay.increment();        
         }
-        if (hourDisplay.getValue() == 12 && minuteDisplay.getValue() == 0) {
-            if (period.equals("AM")) {
-                period = "PM";
-            } else {
-                period = "AM";
+        if (hourDisplay.getValue() == 12) {
+            if (minuteDisplay.getValue() == 0) {
+                if (periodOfDay.equals("AM")) {
+                    periodOfDay = "PM";
+                } else {
+                    periodOfDay = "AM";
+                }
             }
         }
         refreshDisplay();
     }
-    
-    // Implement am/pm
-    public void setClockTime(int hour, int minute, String timePeriod) {
-        period = timePeriod;
+
+    // Set the time based on hour, minute, and period (AM/PM)
+    public void setTime(int hour, int minute, String period) {
+        periodOfDay = period;
         minuteDisplay.setValue(minute);
         hourDisplay.setValue(hour);
-        refreshDisplay();
+        refreshDisplay();       
     }
-    
-    // Implement a method getTime that takes no parameter and returns a String
-    // The return String should be formatted as HH:MM and report out the current time
+
+    // Returns the current time formatted as HH:MM
     public String getTime() {
-        return timeString;
+        return timeRepresentation;
     }
-    
-    // Implement a method updateDisplay that takes no parameters and returns nothing
-    // The method should update the displayString with the current time in a format
-    // HH:MM
-    private void refreshDisplay() {
-        String output = "";
-        output = hourDisplay.getDisplayValue();
-        output += ":";
-        output += minuteDisplay.getDisplayValue();
-        timeString = output + period;
+
+    // Updates the display string with the current time in HH:MM format
+    public void refreshDisplay() {
+        String timeString = "";
+        timeString = hourDisplay.getDisplayValue();
+        timeString += ":";
+        timeString += minuteDisplay.getDisplayValue();
+        timeRepresentation = timeString + periodOfDay;    
     }
 }
